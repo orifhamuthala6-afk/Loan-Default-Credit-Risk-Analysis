@@ -153,7 +153,7 @@ FROM `banktransaction`.`frauddetection`.`loan_default`;
 SELECT DISTINCT previous_loan_defaults_on_file
 FROM `banktransaction`.`frauddetection`.`loan_default`;
 ------------------------------CHECKING loan_status
-SELECT DISTINCT loan_status
+SELECT DISTINCT loan_status AS Default_Rate
 FROM `banktransaction`.`frauddetection`.`loan_default`;
 -----------------------creating a temp table
 CREATE OR REPLACE TEMP VIEW loan_default AS
@@ -218,7 +218,7 @@ WHEN credit_score<740 THEN 'Good'
 ELSE 'Exceptional'
 END AS Credit_Score_Bucket,
 previous_loan_defaults_on_file,
-loan_status
+loan_status AS Default_Rate
 FROM `banktransaction`.`frauddetection`.`loan_default`;
 SELECT*
 FROM  loan_default temp;
